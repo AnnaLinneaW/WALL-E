@@ -14,13 +14,45 @@ const firstResult = results.length > 0 ? results[0] : {};
 const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
 const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
 
-console.log("cardUser", cardUser);
+const handleAddCard = () => {
+
+    if (cardNumber.length !== 16 || cvv.length !== 3 ) {
+        setError("Card number must be 16 digits and CVV must be 3 digits.");
+        return;
+      }
+    if (expirationDate.length == ""){
+        setError("Please enter expiration date");
+        return;
+    }
+
+
+    dispatch(addCard({
+        cardVendor: selectedVendor,
+        firstName: firstName,
+        lastName: lastName,
+        cardNumber: document.getElementById("creditNum").value,
+        cvv: document.getElementById("cvv").value,
+        expirationDate: document.getElementById("date").value,
+        expirationYear: document.getElementById("date").value,
+    }))
+    setSelectedVendor("VISA");
+    setFirstName(firstName);
+    setLastName(lastName);
+    setCardNumber("");
+    setCvv("");
+    setExpirationDate("");
+}
+
+
   const [selectedVendor, setSelectedVendor] = useState("VISA");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [firstNameRed, setFirstName] = useState("");
   const [lastNameRed, setLastName] = useState("");
+  const [error, setError] = useState("");
+
+  
 
 
   
@@ -60,23 +92,29 @@ console.log("cardUser", cardUser);
           type="text" 
           id="firstName" 
           defaultValue={firstName || firstNameRed}
+          readOnly
           />
           <br />
           <input 
           type="text" 
           id="lastName" 
           defaultValue={lastName || lastNameRed} 
+          readOnly
           />
             <br />
             <input 
-            type="number" 
+            type="text" 
             id="creditNum"
+            max={16}
+            min={16}
             onChange={(e) => setCardNumber(e.target.value)}
             placeholder="Creditcard number" />
             <br />
             <input 
-            type="number" 
+            type="text" 
             id="cvv" 
+            max={3}
+            min={3}
             onChange={(e) => setCvv(e.target.value)}
             placeholder="CVV" />
             <br />
@@ -85,25 +123,9 @@ console.log("cardUser", cardUser);
             id="date"
             onChange={(e) => setExpirationDate(e.target.value)}
             />
+            {error && <p style={{ color: "red" }}>{error}</p>}
             <br />
-            <button onClick={()=>{
-                dispatch(addCard({
-                cardVendor: selectedVendor,
-                firstName: firstName,
-                lastName: lastName,
-                cardNumber: document.getElementById("creditNum").value,
-                cvv: document.getElementById("cvv").value,
-                expirationDate: document.getElementById("date").value,
-                expirationYear: document.getElementById("date").value,
-            }))
-            setSelectedVendor("VISA");
-            setFirstName(firstName);
-            setLastName(lastName);
-            setCardNumber("");
-            setCvv("");
-            setExpirationDate("");
-            }}>Add Card</button>
-
+            <button onClick={handleAddCard}>Add Card</button>
         </div>
       </div>
     </>
