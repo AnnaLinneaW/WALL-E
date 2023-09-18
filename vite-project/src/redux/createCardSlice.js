@@ -10,7 +10,8 @@ const addCardSlice = createSlice({
         CVV: "",
         expirationDate: "",
         expirationYear: "",
-        cardVendor: "",}
+        cardVendor: "",
+        cardActive: false,}
     ]
     },
     reducers: {

@@ -6,17 +6,15 @@ import { addCard } from "../redux/createCardSlice";
 export const AddCards = () => {
   const dispatch = useDispatch();
   const cardUser = useSelector((state) => state.card);
-  const userName = useSelector((state) => state.cardUser);
+  const userName = useSelector((state) => state.userName);
+  const { status, card } = useSelector((state) => state.userName);
 
-
-
-console.log(userName);
-
-const results = userName && userName.results ? userName.results : [];
+const results = card && card.results ? card.results : [];
 const firstResult = results.length > 0 ? results[0] : {};
 const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
 const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
 
+console.log("cardUser", cardUser);
   const [selectedVendor, setSelectedVendor] = useState("VISA");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");

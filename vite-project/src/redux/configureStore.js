@@ -3,9 +3,9 @@ import addNameSlice from "./addNameSlice";
 import createCardSlice from "./createCardSlice";
 const store = configureStore({
   reducer: {
-    cardUser: addNameSlice,
+    userName: addNameSlice,
     card: createCardSlice,
-    
+
 
 }
 });
