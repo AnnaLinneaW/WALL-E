@@ -8,6 +8,7 @@ export const getCardUser = createAsyncThunk(
         return data;
     });
 
+
 const addNameSlice = createSlice({
     name: "addNameSlice",
     initialState: {
@@ -17,8 +18,7 @@ const addNameSlice = createSlice({
     reducers: {
         addName: (state, action) => {
             state.card = action.payload;
-        },
-
+        },            
         getCardUser: async () => {},
     },
     extraReducers: {

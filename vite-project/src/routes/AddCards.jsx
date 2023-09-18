@@ -4,15 +4,21 @@ import { addName, getCardUser } from "../redux/addNameSlice";
 import { addCard } from "../redux/createCardSlice";
 
 export const AddCards = () => {
-  const dispatch = useDispatch();
-  const cardUser = useSelector((state) => state.card);
-  const userName = useSelector((state) => state.userName);
-  const { status, card } = useSelector((state) => state.userName);
+    const dispatch = useDispatch();
+    const cardUser = useSelector((state) => state.card);
+    const { status, card } = useSelector((state) => state.userName);
+    
+    const results = card && card.results ? card.results : [];
+    const firstResult = results.length > 0 ? results[0] : {};
+    const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
+    const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
 
-const results = card && card.results ? card.results : [];
-const firstResult = results.length > 0 ? results[0] : {};
-const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
-const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
+    const cardFirstName = firstName;
+    const cardLastName = lastName;
+    
+    return {cardFirstName, cardLastName}
+  
+
 
 const handleAddCard = () => {
 
@@ -20,11 +26,10 @@ const handleAddCard = () => {
         setError("Card number must be 16 digits and CVV must be 3 digits.");
         return;
       }
-    if (expirationDate.length == ""){
+    if (expirationMonth.length == ""){
         setError("Please enter expiration date");
         return;
     }
-
 
     dispatch(addCard({
         cardVendor: selectedVendor,
@@ -32,28 +37,30 @@ const handleAddCard = () => {
         lastName: lastName,
         cardNumber: document.getElementById("creditNum").value,
         cvv: document.getElementById("cvv").value,
-        expirationDate: document.getElementById("date").value,
-        expirationYear: document.getElementById("date").value,
+        expirationMonth: document.getElementById("month").value,
+        expirationYear: document.getElementById("year").value,
+        cardActive: false,   
     }))
     setSelectedVendor("VISA");
     setFirstName(firstName);
     setLastName(lastName);
     setCardNumber("");
     setCvv("");
-    setExpirationDate("");
+    setExpirationMonth("");
+    setExpirationYear("");
 }
 
 
   const [selectedVendor, setSelectedVendor] = useState("VISA");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");
-  const [expirationDate, setExpirationDate] = useState("");
+  const [expirationMonth, setExpirationMonth] = useState("");
+  const [expirationYear, setExpirationYear] = useState("");
   const [firstNameRed, setFirstName] = useState("");
   const [lastNameRed, setLastName] = useState("");
   const [error, setError] = useState("");
 
   
-
 
   
   return (
@@ -71,7 +78,7 @@ const handleAddCard = () => {
             <p>{cardNumber}</p>
             </div>
             <p>{cvv}</p>
-            <p>{expirationDate}</p>
+            <p>{expirationMonth}/{expirationYear}</p>
             </div>   
 
         <h1>Add Cards</h1>
@@ -103,26 +110,31 @@ const handleAddCard = () => {
           />
             <br />
             <input 
-            type="text" 
+            type="number" 
             id="creditNum"
-            max={16}
-            min={16}
             onChange={(e) => setCardNumber(e.target.value)}
             placeholder="Creditcard number" />
             <br />
             <input 
-            type="text" 
+            type="number" 
             id="cvv" 
-            max={3}
-            min={3}
             onChange={(e) => setCvv(e.target.value)}
             placeholder="CVV" />
             <br />
             <input 
-            type="date" 
-            id="date"
-            onChange={(e) => setExpirationDate(e.target.value)}
+            type="month" 
+            id="month"
+            placeholder="Month"
+            onChange={(e) => setExpirationMonth(e.target.value)}
             />
+            <br />
+            <input
+            type="year"
+            id="year"
+            placeholder="Year"
+            onChange={(e) => setExpirationYear(e.target.value)}
+            />
+            <br />
             {error && <p style={{ color: "red" }}>{error}</p>}
             <br />
             <button onClick={handleAddCard}>Add Card</button>

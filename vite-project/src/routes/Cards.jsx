@@ -26,7 +26,7 @@ export const Cards = () => {
                             <p>{card.cardNumber}</p>
                         </div>
                         <p>{card.cvv}</p>
-                        <p>{card.expirationDate}</p>
+                        <p>{card.expirationMonth}/{card.expirationYear}</p>
                     </div>
                 )})}
             </div>

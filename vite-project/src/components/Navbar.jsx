@@ -4,8 +4,11 @@ export const Navbar = () => {
 
     return (
         <>
-<Link to="/cards" >Cards</Link>
-<Link to="/add-cards" >Add Cards</Link>
+        <nav>
+<Link to="/cards" >My Cards</Link>
+<br />
+<Link to="/add-cards" >Add Card</Link>
+        </nav>
         </>
     )
 }
