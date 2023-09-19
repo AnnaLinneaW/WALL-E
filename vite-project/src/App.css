@@ -40,6 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+.card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
 
 .card-AMERICAN{
   background-color: #1a1a1a;
@@ -54,7 +61,7 @@
 
 }
 .card-VISA{
-  background-color: #fff;
+  background-color: rgb(196, 23, 184);
   color: #000;
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
@@ -75,4 +82,27 @@
   width: 500px;
   height: 300px;
 }
+
+.input{
+  list-style: none;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.active-card{
+border-style: solid;
+border-color: chartreuse;
+order: -1;
+}
+
+
+
 

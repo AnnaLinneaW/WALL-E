@@ -1,6 +1,5 @@
 import {  useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addName, getCardUser } from "../redux/addNameSlice";
 import { addCard } from "../redux/createCardSlice";
 
 export const AddCards = () => {
@@ -13,20 +12,14 @@ export const AddCards = () => {
     const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
     const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
 
-    const cardFirstName = firstName;
-    const cardLastName = lastName;
-    
-    return {cardFirstName, cardLastName}
   
-
-
 const handleAddCard = () => {
 
     if (cardNumber.length !== 16 || cvv.length !== 3 ) {
         setError("Card number must be 16 digits and CVV must be 3 digits.");
         return;
       }
-    if (expirationMonth.length == ""){
+    if (expirationMonth.length == "" || expirationYear.length == "" ){
         setError("Please enter expiration date");
         return;
     }
@@ -49,7 +42,6 @@ const handleAddCard = () => {
     setExpirationMonth("");
     setExpirationYear("");
 }
-
 
   const [selectedVendor, setSelectedVendor] = useState("VISA");
   const [cardNumber, setCardNumber] = useState("");
@@ -109,6 +101,7 @@ const handleAddCard = () => {
           readOnly
           />
             <br />
+            <div className="input-div">
             <input 
             type="number" 
             id="creditNum"
@@ -122,18 +115,19 @@ const handleAddCard = () => {
             placeholder="CVV" />
             <br />
             <input 
-            type="month" 
+            type="number" 
             id="month"
             placeholder="Month"
             onChange={(e) => setExpirationMonth(e.target.value)}
             />
             <br />
             <input
-            type="year"
+            type="number"
             id="year"
             placeholder="Year"
             onChange={(e) => setExpirationYear(e.target.value)}
             />
+            </div>
             <br />
             {error && <p style={{ color: "red" }}>{error}</p>}
             <br />

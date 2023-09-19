@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Navbar } from '../components/navbar';
-import { getCardUser } from "../redux/addNameSlice";
+import { getCardUser } from "../redux/createCardSlice";
 
 
 export const Root = () => {
