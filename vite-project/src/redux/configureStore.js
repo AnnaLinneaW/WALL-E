@@ -6,7 +6,7 @@ const store = configureStore({
     userName: addNameSlice,
     card: createCardSlice,
     deleteCard: createCardSlice,
-    activeCard: createCardSlice
+    activeCard: createCardSlice,
 }
 });
 

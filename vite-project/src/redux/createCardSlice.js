@@ -21,7 +21,7 @@ const createCardSlice = createSlice({
         expirationYear: "23",
         cardVendor: "AMERICAN",
         cardActive: true,
-    }
+    }, 
     ]
     },
     reducers: {
@@ -33,7 +33,7 @@ const createCardSlice = createSlice({
         },
         addCard: (state, action) => {
             if (state.cards.length >= 4) {
-                alert("You can't add more than 4 cards");
+                state.status= "You can't add more than 4 cards";
             } else {
                 state.cards.push({ ...action.payload });
             }
@@ -45,11 +45,13 @@ const createCardSlice = createSlice({
             const cardIndex = action.payload.index;
             state.cards = state.cards.map((card, index) => {
                 if (index === cardIndex) {
-                    card.cardActive = !card.cardActive;
+                    card.cardActive = true;
+                } else {
+                    card.cardActive = false;
                 }
                 return card;
             });
-        },
+        }
     },
     extraReducers: {
         [getCardUser.pending]: (state, action) => {

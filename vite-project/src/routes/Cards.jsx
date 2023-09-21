@@ -18,17 +18,21 @@ export const Cards = () => {
     }
   };
 
+
+
+
   return (
     <>
       <h1>Your cards</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <div className="card-list">
         {cards.map((card, index) => {
           return (
             <>
               <div
-                className={`${card.cardActive ? "active-card" : ""}`}
+                className={`${card.cardActive ? "active-card" : "inactive-card"}`}
                 onClick={() => {
-                  dispatch(activeCard({ index: index, active: !card.active }));
+                    dispatch(activeCard({ index }));
                 }}
               >
                 <div className={`card-${card.cardVendor} `}>
@@ -46,13 +50,12 @@ export const Cards = () => {
                   <p>
                     {card.expirationMonth}/{card.expirationYear}
                   </p>
-                </div>
-
-                <div>
                   <button onClick={() => handleDeleteCard(index)}>
                     Delete
                   </button>
-                  {error && <p style={{ color: "red" }}>{error}</p>}
+                </div>
+
+                <div>
                 </div>
               </div>
             </>

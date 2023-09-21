@@ -5,23 +5,34 @@
   text-align: center;
 }
 
-
 .card {
   padding: 2em;
 }
 
-  .card-list {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1em;
+.card-list {
+  display: flex;
+  flex-direction: column; /* Ändra till column för att korten ska staplas på varandra */
+  justify-content: center;
+  gap: 1em;
 }
 
-.active-card{
-  order: -1;
-  border: #fff;
-  }
+.active-card {
+  order: -1; /* Ändra ordningen på korten så att det aktiva kortet hamnar överst */
+  z-index: 2; /* Högre z-index för att ligga ovanpå inaktiva kort */
+  position: relative; /* Sätt position till relativ för att justera margin för inaktiva kort */
+  margin-bottom: 16em; /* Justera marginalet mellan aktiva och inaktiva kort */
+}
+
+.inactive-card {
+  order: 1;
+  z-index: 1;
+  position: relative;
+  margin-top: -15em;
+}
+
+
+
+  
 
 
 .card-AMERICAN{
