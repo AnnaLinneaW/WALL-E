@@ -32,14 +32,14 @@ export const AddCards = () => {
         cardVendor: selectedVendor,
         firstName: firstName,
         lastName: lastName,
-        cardNumber: document.getElementById("creditNum").value,
-        cvv: document.getElementById("cvv").value,
-        expirationMonth: document.getElementById("month").value,
-        expirationYear: document.getElementById("year").value,
+        cardNumber: cardNumber,
+        cvv: cvv,
+        expirationMonth: expirationMonth,
+        expirationYear: expirationYear,
         cardActive: false,
       })
     );
-    setSelectedVendor("VISA");
+    setSelectedVendor("RoboPay");
     setFirstName(firstName);
     setLastName(lastName);
     setCardNumber("");
@@ -49,7 +49,7 @@ export const AddCards = () => {
     setError("");
   };
 
-  const [selectedVendor, setSelectedVendor] = useState("VISA");
+  const [selectedVendor, setSelectedVendor] = useState("RoboPay");
   const [cardNumber, setCardNumber] = useState("");
   const [cvv, setCvv] = useState("");
   const [expirationMonth, setExpirationMonth] = useState("");
@@ -78,7 +78,7 @@ export const AddCards = () => {
           </p>
         </div>
 
-        <h1>Add Cards</h1>
+        <h2>Add Cards</h2>
         <div>
           <select
             name="cardVendor"
@@ -89,9 +89,9 @@ export const AddCards = () => {
             }
             value={selectedVendor}
           >
-            <option value="VISA">Visa</option>
-            <option value="mastercard">Mastercard</option>
-            <option value="AMERICAN">Amex</option>
+            <option value="RoboPay">RoboPay</option>
+            <option value="SpaceSaver">SpaceSaver</option>
+            <option value="EveCard">EveCard</option>
           </select>
           <br />
           <input
@@ -119,7 +119,6 @@ export const AddCards = () => {
                   .replace(/\D/g, "") // Ta bort allt som inte är siffror
                   .replace(/\B(?=(\d{4})+(?!\d))/g, " "); // Lägg till mellanslag efter varje 4:e siffra
 
-                // Om formattedValue är en tom sträng, tillåt användaren att radera text
                 if (formattedValue === "") {
                   setCardNumber(""); // Uppdatera state med en tom sträng
                 } else if (formattedValue.length <= 19) {
@@ -135,15 +134,12 @@ export const AddCards = () => {
               type="text"
               id="cvv"
               maxLength={3}
+              value={cvv}
               onChange={(e) => {
                 const inputValue = e.target.value;
-                // Om inputValue är en tom sträng, tillåt användaren att radera text
-                if (inputValue === "") {
-                  setCvv(""); // Uppdatera state med en tom sträng
-                  setError(""); // Rensa eventuella tidigare felmeddelanden
-                } else if (/^\d*$/.test(inputValue) && inputValue.length <= 3) {
-                  setCvv(inputValue); // Annars, uppdatera state med det nya värdet om det är en giltig numerisk inmatning och inte längre än 3 tecken
-                  setError(""); // Rensa eventuella tidigare felmeddelanden
+                if (/^\d*$/.test(inputValue) && inputValue.length <= 3) {
+                  setCvv(inputValue); 
+                  setError(""); 
                 } else {
                   setError(
                     "Please enter only numeric digits and a maximum of 3 characters."
@@ -151,7 +147,6 @@ export const AddCards = () => {
                 }
               }}
               placeholder="CVV"
-              value={cvv}
             />
             <br />
             <input
@@ -161,26 +156,26 @@ export const AddCards = () => {
               maxLength={2}
               onChange={(e) => {
                 const inputValue = e.target.value;
+                const newMonth =
+                  inputValue.length === 2 ? inputValue : "0" + inputValue;
                 if (!/^\d*$/.test(inputValue)) {
-                  setError("Please enter only numeric digits.");
+                    setError("Please enter only numeric digits.");
                 } else {
-                  const monthValue = parseInt(inputValue, 10);
-                  if (monthValue >= 1 && monthValue <= 12) {
+                  if (newMonth >= 1 && newMonth <= 12) {
                     setError("");
-                    setExpirationMonth(inputValue);
+                    setExpirationMonth(newMonth);
                   } else {
-                    setError("Please enter a valid month (1-12).");
+                    setError("Please enter a valid month (01-12).");
                   }
                 }
               }}
             />
-
             <br />
             <input
               type="text"
               id="year"
               placeholder="Year"
-              maxLength={2} // Begränsa inmatningen till 2 tecken
+              maxLength={2}
               onChange={(e) => {
                 const inputValue = e.target.value;
                 const currentYear = new Date()
@@ -192,7 +187,9 @@ export const AddCards = () => {
                   inputValue > 28 ||
                   inputValue < currentYear
                 ) {
-                  setError("Please enter a valid 2-digit year between " + currentYear +" and 28.");
+                  setError(
+                    "Please enter a valid 2-digit year between 23 and 28."
+                  );
                 } else {
                   setError(""); // Rensa felmeddelandet om inmatningen är giltig
                   setExpirationYear(inputValue);

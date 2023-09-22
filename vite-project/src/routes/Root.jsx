@@ -15,6 +15,7 @@ export const Root = () => {
   return (
     <div className="site-wrapper">
       <Navbar />
+      <h1>WALL-E</h1>
       <Outlet />
     </div>
   );

@@ -1,12 +1,29 @@
+@font-face {
+  font-family: 'Kredit'; 
+  src: url('./assets/kredit/kredit\ back.otf') format('truetype'); /* Sökvägen till din fontfil */
+}
+@font-face {
+  font-family: 'Kredit2'; 
+  src: url('./assets/kredit/kredit.otf') format('truetype'); /* Sökvägen till din fontfil */
+}
+@font-face{
+  font-family: 'Wall-E-Font';
+  src: url('./assets/wall-e/gunshipout.ttf') format('truetype');
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+h1{
+  font-family:Wall-E-Font;
+}
 
 .card {
   padding: 2em;
+
 }
 
 .card-list {
@@ -17,26 +34,34 @@
 }
 
 .active-card {
-  order: -1; /* Ändra ordningen på korten så att det aktiva kortet hamnar överst */
-  z-index: 2; /* Högre z-index för att ligga ovanpå inaktiva kort */
-  position: relative; /* Sätt position till relativ för att justera margin för inaktiva kort */
-  margin-bottom: 16em; /* Justera marginalet mellan aktiva och inaktiva kort */
+  position: relative;
+  order: -1; 
+  z-index: 2; 
+  margin-bottom: 16em; 
 }
 
 .inactive-card {
+  position: relative;
   order: 1;
   z-index: 1;
-  position: relative;
   margin-top: -15em;
 }
-
-
-
+nav{
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
   
 
 
-.card-AMERICAN{
-  background-color: #1a1a1a;
+.card-EveCard{
+  font-family: 'Wall-E-Font', Courier, monospace;
+  font-weight: bold;
   color: #fff;
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
@@ -45,11 +70,15 @@
   box-sizing: border-box;
   width: 500px;
   height: 300px;
+  background-image: url('./assets/Eve.jpg');
+  background-size: cover;
 
 }
-.card-VISA{
+.card-RoboPay{
+  font-family: 'Wall-E-Font', Courier, monospace;
+  font-weight: bold;
+  color: #fff;
   background-color: rgb(196, 23, 184);
-  color: #000;
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
   -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
@@ -57,18 +86,86 @@
   box-sizing: border-box;
   width: 500px;
   height: 300px;
+  background-image: url('./assets/WALL_E.jpg');
+  background-size: cover;
+  background-position: center;
 }
-.card-mastercard{
+.card-SpaceSaver{
+  font-family: 'Wall-E-Font', Courier, monospace;
+  font-weight: bold;
+  color: #fff;
   background-color: #ff0000;
+  border-radius: 15px;
+  box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  box-sizing: border-box;
+  width: 500px;
+  height: 300px;
+  background-image: url('./assets/SNOW_WALL_E.jpg');
+  background-size: cover;
+}
+
+.vendor-RoboPay {
   color: #fff;
   border-radius: 15px;
-  box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -moz-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  box-sizing: border-box;
-  width: 500px;
-  height: 300px;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
+.vendor-SpaceSaver {
+
+  color: #fff;
+  border-radius: 15px;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.vendor-EveCard {
+  color: #fff;
+  width: fit-content;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.clientName {
+  text-align: center;
+  margin-top: 15px;
+  width: fit-content;
+  position: relative;
+  left: 6%;
+  top: 37%;
+}
+.expiration{
+  text-align: center;
+  margin-top: 15px;
+  width: fit-content;
+  position: relative;
+  left: 49%;
+  top: 43%;
+}
+.cardNumber{
+  text-align: center;
+  margin-top: 15px;
+  width: fit-content;
+  font-size: x-large;
+  position: relative;
+  left: 17%;
+  top: 43%;
+
+}
+.cvv{
+  text-align: center;
+  margin-top: 15px;
+  width: fit-content;
+  position: relative;
+  left: 79%;
+  top: 49%;
+}
+
 
 .input{
   list-style: none;
@@ -83,9 +180,3 @@
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-
-
-
-
-
-
