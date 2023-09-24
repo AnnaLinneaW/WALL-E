@@ -7,8 +7,6 @@ export const Cards = () => {
   const cards = useSelector((state) => state.card.cards);
   const [error, setError] = useState("");
 
-  console.log(cards);
-
   const handleDeleteCard = (index) => {
     if (cards[index].cardActive) {
       setError("You can't delete an active card");
@@ -27,8 +25,8 @@ export const Cards = () => {
       <div className="card-list">
         {cards.map((card, index) => {
           return (
-            <>
-              <div
+             
+              <div key={index}
                 className={`${
                   card.cardActive ? "active-card" : "inactive-card"
                 }`}
@@ -37,10 +35,12 @@ export const Cards = () => {
                 }}
               >
                 <div className={`card-${card.cardVendor} `}>
+                 <div  className="card-wrapper" >
                   <div className={`vendor-${card.cardVendor}`}>
                     <p>{card.cardVendor}</p>
                   </div>
                   <div className="cvv">
+                  <img src="./assets/chip.png" alt="Beskrivning av bilden" />
                     <p>{card.cvv}</p>
                   </div>
                   <div className="cardNumber">
@@ -57,7 +57,7 @@ export const Cards = () => {
                       {card.lastName.toUpperCase()}
                     </p>
                   </div>
-                  <div>
+                  <div className="delete-btn">
                     {!card.cardActive && (
                       <button onClick={() => handleDeleteCard(index)}>
                         Delete
@@ -65,10 +65,8 @@ export const Cards = () => {
                     )}
                   </div>
                 </div>
-
-                <div></div>
               </div>
-            </>
+              </div>
           );
         })}
       </div>

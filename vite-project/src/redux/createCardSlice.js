@@ -40,7 +40,7 @@ const createCardSlice = createSlice({
         cvv: "988",
         expirationMonth: "12",
         expirationYear: "23",
-        cardVendor: "SpaceSaver",
+        cardVendor: "EarthSaver",
         cardActive: false,
       },
     ],

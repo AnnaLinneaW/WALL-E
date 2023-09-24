@@ -1,0 +1,193 @@
+@font-face {
+  font-family: "Wall-E-Font";
+  src: url("./assets/wall-e/gunshipacadital.ttf") format("truetype");
+}
+@mixin card-style($background-image, $overlay-image) {
+  font-family: "Wall-E-Font", Courier, monospace;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
+  box-sizing: border-box;
+  width: 500px;
+  height: 300px;
+  position: relative;
+  background-image: url("#{$background-image}");
+  background-size: cover;
+  z-index: -1;
+  &::after {
+    content: "";
+    font-family: "Wall-E-Font", Courier, monospace;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: -5px -2px 55px -8px rgba(240, 231, 231, 0.74);
+    -webkit-box-shadow: -5px -2px 55px -8px rgba(216, 204, 204, 0.74);
+    -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
+    box-sizing: border-box;
+    width: 10%;
+    height: 16%;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    background-image: url("#{$overlay-image}");
+    background-size: cover;
+    z-index: 1;
+  }
+}
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  width: 100%;
+   
+    a{
+      text-decoration: none;
+      color: #84aed5;
+      font-family: Wall-E-Font;
+      font-size: 1.5rem;
+      &:hover{
+        color: #fff;
+      }
+    }
+}
+
+h1 {
+  font-family: Wall-E-Font;
+  color: #84aed5;
+}
+h2 {
+  font-family: Wall-E-Font;
+  color: #84aed5;
+}
+
+// wrappar alla kort
+.card-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+.active-card {
+  position: relative;
+  order: -1;
+  z-index: 2;
+  margin-bottom: 16em;
+}
+
+.inactive-card {
+  position: relative;
+  order: 1;
+  z-index: 1;
+  margin-top: -15em;
+}
+
+/* Wrapper för varje individuellt kort */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 500px;
+  height: 300px;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.card-EveCard {
+  @include card-style("./assets/Eve.jpg", "./assets/plantIcon.png");
+}
+
+.card-RoboPay {
+  @include card-style("./assets/WALL_E.jpg", "./assets/plantIcon.png");
+  background-position: center;
+}
+
+.card-EarthSaver {
+  @include card-style("./assets/SNOW_WALL_E.jpg", "./assets/plantIcon.png");
+}
+
+
+
+.vendor-RoboPay {
+  width: fit-content;
+  align-self: self-start;
+  position: absolute;
+  right: 6%;
+}
+.vendor-EarthSaver {
+  width: fit-content;
+  align-self: self-start;
+  position: absolute;
+  right: 6%;
+}
+.vendor-EveCard {
+  width: fit-content;
+  align-self: self-start;
+  position: absolute;
+  right: 6%;
+}
+.clientName {
+  text-align: center;
+  align-self: flex-end;
+  width: fit-content;
+  position: absolute;
+  left: 5%;
+}
+.expiration {
+  text-align: center;
+  width: fit-content;
+  align-self: end;
+  position: absolute;
+  right: 7%;
+}
+.cardNumber {
+  text-align: center;
+  width: fit-content;
+  font-size: x-large;
+  align-self: flex-end;
+  padding: 5%;
+  position: absolute;
+}
+.cvv {
+  text-align: center;
+  width: fit-content;
+  align-self: center;
+  position: absolute;
+  right: 12%;
+}
+.delete-btn {
+  border-radius: 15px;
+  padding: 5px;
+  position: absolute;
+  top: 5%;
+  right: 101%;
+}
+
+.input {
+  list-style: none;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+

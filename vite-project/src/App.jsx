@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.scss'
 import {createBrowserRouter, createRoutesFromElements, RouterProvider, Route} from 'react-router-dom'
 import {Cards} from './routes/Cards'
 import {AddCards} from './routes/AddCards'

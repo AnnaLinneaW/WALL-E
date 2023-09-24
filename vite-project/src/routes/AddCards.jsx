@@ -9,8 +9,7 @@ export const AddCards = () => {
 
   const results = card && card.results ? card.results : [];
   const firstResult = results.length > 0 ? results[0] : {};
-  const firstName =
-    firstResult && firstResult.name ? firstResult.name.first : "";
+  const firstName = firstResult && firstResult.name ? firstResult.name.first : "";
   const lastName = firstResult && firstResult.name ? firstResult.name.last : "";
 
   const handleAddCard = () => {
@@ -60,26 +59,35 @@ export const AddCards = () => {
 
   return (
     <>
-      <div>
-        <div className={`card-${selectedVendor}`}>
+    <div className="card-list">
+        <div className={`card-${selectedVendor} `}>
+      <div className="card-wrapper">
           <div className={`vendor-${selectedVendor}`}>
             <p>{selectedVendor}</p>
           </div>
-          <div className="clientName">
-            <p>{firstNameRed.toUpperCase() || firstName.toUpperCase()}</p>
-            <p>{lastNameRed.toUpperCase() || lastName.toUpperCase()}</p>
+          <div className="cvv">
+            <p>{cvv}</p>
           </div>
           <div className="cardNumber">
             <p>{cardNumber}</p>
           </div>
-          <p>{cvv}</p>
-          <p>
-            {expirationMonth}/{expirationYear}
-          </p>
+          <div className="expiration">
+            <p>
+              {expirationMonth}/{expirationYear}
+            </p>
+          </div>
+          <div className="clientName">
+            <p>
+              {firstName.toUpperCase() || firstNameRed.toUpperCase()}{" "}
+              {lastName.toUpperCase() || lastNameRed.toUpperCase()}
+            </p>
+          </div>
+          </div>
         </div>
-
+      </div>
+      <div className="add-card">
         <h2>Add Cards</h2>
-        <div>
+        <div className="form-div">
           <select
             name="cardVendor"
             id="cardVendorSelect"
@@ -90,7 +98,7 @@ export const AddCards = () => {
             value={selectedVendor}
           >
             <option value="RoboPay">RoboPay</option>
-            <option value="SpaceSaver">SpaceSaver</option>
+            <option value="EarthSaver">EarthSaver</option>
             <option value="EveCard">EveCard</option>
           </select>
           <br />
@@ -138,8 +146,8 @@ export const AddCards = () => {
               onChange={(e) => {
                 const inputValue = e.target.value;
                 if (/^\d*$/.test(inputValue) && inputValue.length <= 3) {
-                  setCvv(inputValue); 
-                  setError(""); 
+                  setCvv(inputValue);
+                  setError("");
                 } else {
                   setError(
                     "Please enter only numeric digits and a maximum of 3 characters."
@@ -159,7 +167,7 @@ export const AddCards = () => {
                 const newMonth =
                   inputValue.length === 2 ? inputValue : "0" + inputValue;
                 if (!/^\d*$/.test(inputValue)) {
-                    setError("Please enter only numeric digits.");
+                  setError("Please enter only numeric digits.");
                 } else {
                   if (newMonth >= 1 && newMonth <= 12) {
                     setError("");
@@ -203,6 +211,6 @@ export const AddCards = () => {
           <button onClick={handleAddCard}>Add Card</button>
         </div>
       </div>
-    </>
+      </>
   );
 };

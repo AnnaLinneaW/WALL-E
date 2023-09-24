@@ -1,43 +1,61 @@
+@charset "UTF-8";
 @font-face {
-  font-family: 'Kredit'; 
-  src: url('./assets/kredit/kredit\ back.otf') format('truetype'); /* Sökvägen till din fontfil */
+  font-family: "Wall-E-Font";
+  src: url("./assets/wall-e/gunshipacadital.ttf") format("truetype");
 }
-@font-face {
-  font-family: 'Kredit2'; 
-  src: url('./assets/kredit/kredit.otf') format('truetype'); /* Sökvägen till din fontfil */
-}
-@font-face{
-  font-family: 'Wall-E-Font';
-  src: url('./assets/wall-e/gunshipout.ttf') format('truetype');
-}
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-h1{
-  font-family:Wall-E-Font;
+
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-.card {
-  padding: 2em;
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  width: 100%;
+}
+nav a {
+  text-decoration: none;
+  color: #84aed5;
+  font-family: Wall-E-Font;
+  font-size: 1.5rem;
+}
+nav a:hover {
+  color: #fff;
+}
 
+h1 {
+  font-family: Wall-E-Font;
+  color: #84aed5;
+}
+
+h2 {
+  font-family: Wall-E-Font;
+  color: #84aed5;
 }
 
 .card-list {
   display: flex;
-  flex-direction: column; /* Ändra till column för att korten ska staplas på varandra */
+  flex-direction: column;
   justify-content: center;
   gap: 1em;
 }
 
 .active-card {
   position: relative;
-  order: -1; 
-  z-index: 2; 
-  margin-bottom: 16em; 
+  order: -1;
+  z-index: 2;
+  margin-bottom: 16em;
 }
 
 .inactive-card {
@@ -46,128 +64,204 @@ h1{
   z-index: 1;
   margin-top: -15em;
 }
-nav{
+
+/* Wrapper för varje individuellt kort */
+.card-wrapper {
   display: flex;
-  position: sticky;
-  justify-content: space-between;
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 15px;
+  justify-content: center;
+  flex-direction: row;
+  width: 500px;
+  height: 300px;
+  flex-wrap: wrap;
+  align-content: flex-end;
 }
-  
 
-
-.card-EveCard{
-  font-family: 'Wall-E-Font', Courier, monospace;
+.card-EveCard {
+  font-family: "Wall-E-Font", Courier, monospace;
   font-weight: bold;
   color: #fff;
   border-radius: 15px;
-  box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -moz-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
   width: 500px;
   height: 300px;
-  background-image: url('./assets/Eve.jpg');
+  position: relative;
+  background-image: url("./assets/Eve.jpg");
   background-size: cover;
-
+  z-index: -1;
 }
-.card-RoboPay{
-  font-family: 'Wall-E-Font', Courier, monospace;
+.card-EveCard::after {
+  content: "";
+  font-family: "Wall-E-Font", Courier, monospace;
   font-weight: bold;
   color: #fff;
-  background-color: rgb(196, 23, 184);
   border-radius: 15px;
-  box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -moz-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  box-shadow: -5px -2px 55px -8px rgba(240, 231, 231, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(216, 204, 204, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
+  box-sizing: border-box;
+  width: 10%;
+  height: 16%;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  background-image: url("./assets/plantIcon.png");
+  background-size: cover;
+  z-index: 1;
+}
+
+.card-RoboPay {
+  font-family: "Wall-E-Font", Courier, monospace;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
   width: 500px;
   height: 300px;
-  background-image: url('./assets/WALL_E.jpg');
+  position: relative;
+  background-image: url("./assets/WALL_E.jpg");
   background-size: cover;
+  z-index: -1;
   background-position: center;
 }
-.card-SpaceSaver{
-  font-family: 'Wall-E-Font', Courier, monospace;
+.card-RoboPay::after {
+  content: "";
+  font-family: "Wall-E-Font", Courier, monospace;
   font-weight: bold;
   color: #fff;
-  background-color: #ff0000;
   border-radius: 15px;
-  box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -webkit-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
-  -moz-box-shadow: -5px -2px 55px -8px rgba(31,25,25,0.74);
+  box-shadow: -5px -2px 55px -8px rgba(240, 231, 231, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(216, 204, 204, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
+  box-sizing: border-box;
+  width: 10%;
+  height: 16%;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  background-image: url("./assets/plantIcon.png");
+  background-size: cover;
+  z-index: 1;
+}
+
+.card-EarthSaver {
+  font-family: "Wall-E-Font", Courier, monospace;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
   width: 500px;
   height: 300px;
-  background-image: url('./assets/SNOW_WALL_E.jpg');
+  position: relative;
+  background-image: url("./assets/SNOW_WALL_E.jpg");
   background-size: cover;
+  z-index: -1;
+}
+.card-EarthSaver::after {
+  content: "";
+  font-family: "Wall-E-Font", Courier, monospace;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: -5px -2px 55px -8px rgba(240, 231, 231, 0.74);
+  -webkit-box-shadow: -5px -2px 55px -8px rgba(216, 204, 204, 0.74);
+  -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
+  box-sizing: border-box;
+  width: 10%;
+  height: 16%;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  background-image: url("./assets/plantIcon.png");
+  background-size: cover;
+  z-index: 1;
 }
 
 .vendor-RoboPay {
-  color: #fff;
-  border-radius: 15px;
-  padding: 5px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-.vendor-SpaceSaver {
-
-  color: #fff;
-  border-radius: 15px;
-  padding: 5px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-.vendor-EveCard {
-  color: #fff;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
-  padding: 5px;
+  align-self: self-start;
   position: absolute;
-  top: 10px;
-  left: 10px;
+  right: 6%;
 }
+
+.vendor-EarthSaver {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: self-start;
+  position: absolute;
+  right: 6%;
+}
+
+.vendor-EveCard {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: self-start;
+  position: absolute;
+  right: 6%;
+}
+
 .clientName {
   text-align: center;
-  margin-top: 15px;
+  align-self: flex-end;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
-  position: relative;
-  left: 6%;
-  top: 37%;
+  position: absolute;
+  left: 5%;
 }
-.expiration{
+
+.expiration {
   text-align: center;
-  margin-top: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
-  position: relative;
-  left: 49%;
-  top: 43%;
+  align-self: end;
+  position: absolute;
+  right: 7%;
 }
-.cardNumber{
+
+.cardNumber {
   text-align: center;
-  margin-top: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   font-size: x-large;
-  position: relative;
-  left: 17%;
-  top: 43%;
-
+  align-self: flex-end;
+  padding: 5%;
+  position: absolute;
 }
-.cvv{
+
+.cvv {
   text-align: center;
-  margin-top: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
-  position: relative;
-  left: 79%;
-  top: 49%;
+  align-self: center;
+  position: absolute;
+  right: 12%;
 }
 
+.delete-btn {
+  border-radius: 15px;
+  padding: 5px;
+  position: absolute;
+  top: 5%;
+  right: 101%;
+}
 
-.input{
+.input {
   list-style: none;
   width: 300px;
   height: 30px;
@@ -176,7 +270,4 @@ nav{
   margin: 10px;
   padding: 5px;
   box-sizing: border-box;
-}
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
+}/*# sourceMappingURL=App.css.map */
