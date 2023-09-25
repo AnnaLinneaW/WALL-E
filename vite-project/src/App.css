@@ -1,7 +1,15 @@
 @charset "UTF-8";
 @font-face {
   font-family: "Wall-E-Font";
-  src: url("./assets/wall-e/gunshipacadital.ttf") format("truetype");
+  src: url("./assets/fonts/wall-e/gunshipacadital.ttf") format("truetype");
+}
+@font-face {
+  font-family: "credit";
+  src: url("./assets/fonts/kredit.otf");
+}
+@font-face {
+  font-family: "Wall-E-Credit";
+  src: url("./assets/fonts/wall-e/gunship3d.ttf");
 }
 #root {
   max-width: 1280px;
@@ -47,22 +55,23 @@ h2 {
 .card-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 1em;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .active-card {
   position: relative;
   order: -1;
   z-index: 2;
-  margin-bottom: 16em;
+  margin-bottom: 35%;
 }
 
 .inactive-card {
   position: relative;
   order: 1;
   z-index: 1;
-  margin-top: -15em;
+  margin-top: -45%;
 }
 
 /* Wrapper för varje individuellt kort */
@@ -77,7 +86,7 @@ h2 {
 }
 
 .card-EveCard {
-  font-family: "Wall-E-Font", Courier, monospace;
+  font-family: "credit", Courier, monospace;
   font-weight: bold;
   color: #fff;
   border-radius: 15px;
@@ -85,8 +94,8 @@ h2 {
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
   -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   position: relative;
   background-image: url("./assets/Eve.jpg");
   background-size: cover;
@@ -107,13 +116,13 @@ h2 {
   position: absolute;
   top: 13px;
   left: 13px;
-  background-image: url("./assets/plantIcon.png");
+  background-image: url("/plantIcon.png");
   background-size: cover;
   z-index: 1;
 }
 
 .card-RoboPay {
-  font-family: "Wall-E-Font", Courier, monospace;
+  font-family: "credit", Courier, monospace;
   font-weight: bold;
   color: #fff;
   border-radius: 15px;
@@ -121,8 +130,8 @@ h2 {
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
   -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   position: relative;
   background-image: url("./assets/WALL_E.jpg");
   background-size: cover;
@@ -144,13 +153,13 @@ h2 {
   position: absolute;
   top: 13px;
   left: 13px;
-  background-image: url("./assets/plantIcon.png");
+  background-image: url("/plantIcon.png");
   background-size: cover;
   z-index: 1;
 }
 
 .card-EarthSaver {
-  font-family: "Wall-E-Font", Courier, monospace;
+  font-family: "credit", Courier, monospace;
   font-weight: bold;
   color: #fff;
   border-radius: 15px;
@@ -158,8 +167,8 @@ h2 {
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
   -moz-box-shadow: -5px -2px 55px -8px rgba(16, 15, 15, 0.74);
   box-sizing: border-box;
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   position: relative;
   background-image: url("./assets/SNOW_WALL_E.jpg");
   background-size: cover;
@@ -180,7 +189,7 @@ h2 {
   position: absolute;
   top: 13px;
   left: 13px;
-  background-image: url("./assets/plantIcon.png");
+  background-image: url("/plantIcon.png");
   background-size: cover;
   z-index: 1;
 }
@@ -192,44 +201,57 @@ h2 {
   align-self: self-start;
   position: absolute;
   right: 6%;
+  font-size: 150%;
+  font-family: "Wall-E-Credit";
+  color: #000;
 }
 
 .vendor-EarthSaver {
+  font-family: "Wall-E-Credit";
+  font-size: 150%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   align-self: self-start;
   position: absolute;
   right: 6%;
+  color: #000;
 }
 
 .vendor-EveCard {
+  font-family: "Wall-E-Credit";
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   align-self: self-start;
+  font-size: 150%;
   position: absolute;
   right: 6%;
+  color: #000;
 }
 
 .clientName {
   text-align: center;
+  font-size: 150%;
   align-self: flex-end;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   position: absolute;
+  bottom: -3%;
   left: 5%;
 }
 
 .expiration {
   text-align: center;
+  font-size: 150%;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   align-self: end;
   position: absolute;
   right: 7%;
+  bottom: 3%;
 }
 
 .cardNumber {
@@ -237,37 +259,101 @@ h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: x-large;
+  font-size: 240%;
   align-self: flex-end;
   padding: 5%;
   position: absolute;
 }
 
 .cvv {
-  text-align: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  display: flex;
   align-self: center;
   position: absolute;
+  width: 77%;
   right: 12%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cvv p {
+  left: 0%;
+  font-size: 120%;
+  bottom: 5%;
+}
+.cvv .chip-img {
+  width: 50px;
+  height: 50px;
+  top: 5%;
+}
+.cvv .wireless-img {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  top: -12%;
+  left: 11%;
 }
 
 .delete-btn {
   border-radius: 15px;
+  z-index: 2;
   padding: 5px;
-  position: absolute;
-  top: 5%;
-  right: 101%;
+  transform: translate(-290px, -142px);
+  transition: background-color 0.3s ease-in-out;
+}
+.delete-btn button:hover::before {
+  font-family: "Wall-E-Font";
+  content: "Delete";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.input {
-  list-style: none;
-  width: 300px;
-  height: 30px;
-  border-radius: 5px;
+.form-div {
+  display: flex;
+  flex-direction: column;
+}
+.form-div input {
+  width: 224px;
+  height: 35px;
+  border-radius: 10px;
   border: 1px solid #000;
-  margin: 10px;
   padding: 5px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .delete-btn {
+    position: relative;
+    top: 10px; /* Ny toppposition */
+    right: 10px; /* Ny högerposition */
+    /* Andra egenskaper för mindre skärmar här */
+  }
+  .card-wrapper {
+    width: 320px;
+    height: 200px;
+  }
+  .card-wrapper .cardNumber {
+    font-size: 150%;
+  }
+  .site-wrapper {
+    gap: none;
+  }
+  .active-card {
+    margin-bottom: 75px;
+  }
+  .inactive-card {
+    margin-top: -10em;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .cvv .chip-img {
+    width: 30px;
+    height: 30px;
+  }
+  .cvv .wireless-img {
+    width: 40px;
+    height: 40px;
+    top: -8%;
+  }
 }/*# sourceMappingURL=App.css.map */

@@ -59,15 +59,21 @@ const createCardSlice = createSlice({
     },
     activeCard: (state, action) => {
       const cardIndex = action.payload.index;
-      state.cards = state.cards.map((card, index) => {
+      const updatedCards = state.cards.map((card, index) => {
         if (index === cardIndex) {
-          card.cardActive = true;
+          return { ...card, cardActive: true };
         } else {
-          card.cardActive = false;
+          return { ...card, cardActive: false };
         }
-        return card;
       });
+      if (updatedCards.every((card) => !card.cardActive) && updatedCards.length === 1) {
+        updatedCards[0].cardActive = true;
+      }
+    
+      state.cards = updatedCards;
     },
+    
+    
   },
   extraReducers: {
     [getCardUser.pending]: (state, action) => {

@@ -66,6 +66,8 @@ export const AddCards = () => {
             <p>{selectedVendor}</p>
           </div>
           <div className="cvv">
+            <img src="/chip.png" alt="" className="chip-img" />
+            <img src="/wireless.png" alt="" className="wireless-img" />
             <p>{cvv}</p>
           </div>
           <div className="cardNumber">

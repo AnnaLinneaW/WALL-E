@@ -25,48 +25,54 @@ export const Cards = () => {
       <div className="card-list">
         {cards.map((card, index) => {
           return (
-             
-              <div key={index}
+            <>
+                  <div key={index} className="delete-btn">
+                    {!card.cardActive && (
+                      <button onClick={() => handleDeleteCard(index)}>X</button>
+                    )}
+                  </div>
+              <div
                 className={`${
                   card.cardActive ? "active-card" : "inactive-card"
                 }`}
-                onClick={() => {
-                  dispatch(activeCard({ index }));
-                }}
               >
                 <div className={`card-${card.cardVendor} `}>
-                 <div  className="card-wrapper" >
-                  <div className={`vendor-${card.cardVendor}`}>
-                    <p>{card.cardVendor}</p>
-                  </div>
-                  <div className="cvv">
-                  <img src="./assets/chip.png" alt="Beskrivning av bilden" />
-                    <p>{card.cvv}</p>
-                  </div>
-                  <div className="cardNumber">
-                    <p>{card.cardNumber}</p>
-                  </div>
-                  <div className="expiration">
-                    <p>
-                      {card.expirationMonth}/{card.expirationYear}
-                    </p>
-                  </div>
-                  <div className="clientName">
-                    <p>
-                      {card.firstName.toUpperCase()}{" "}
-                      {card.lastName.toUpperCase()}
-                    </p>
-                  </div>
-                  <div className="delete-btn">
-                    {!card.cardActive && (
-                      <button onClick={() => handleDeleteCard(index)}>
-                        Delete
-                      </button>
-                    )}
+                  <div
+                    className="card-wrapper"
+                    onClick={() => {
+                      dispatch(activeCard({ index }));
+                    }}
+                  >
+                    <div className={`vendor-${card.cardVendor}`}>
+                      <p>{card.cardVendor}</p>
+                    </div>
+                    <div className="cvv">
+                      <img src="/chip.png" alt="chip" className="chip-img" />
+                      <img
+                        src="/wireless.png"
+                        alt="wireless"
+                        className="wireless-img"
+                      />
+                      <p>{card.cvv}</p>
+                    </div>
+                    <div className="cardNumber">
+                      <p>{card.cardNumber}</p>
+                    </div>
+                    <div className="expiration">
+                      <p>
+                        {card.expirationMonth}/{card.expirationYear}
+                      </p>
+                    </div>
+                    <div className="clientName">
+                      <p>
+                        {card.firstName.toUpperCase()}{" "}
+                        {card.lastName.toUpperCase()}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
+            </>
           );
         })}
       </div>
