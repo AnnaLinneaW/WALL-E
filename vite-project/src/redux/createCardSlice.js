@@ -66,9 +66,6 @@ const createCardSlice = createSlice({
           return { ...card, cardActive: false };
         }
       });
-      if (updatedCards.every((card) => !card.cardActive) && updatedCards.length === 1) {
-        updatedCards[0].cardActive = true;
-      }
     
       state.cards = updatedCards;
     },

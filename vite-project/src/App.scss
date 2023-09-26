@@ -35,8 +35,8 @@
     -webkit-box-shadow: -5px -2px 55px -8px rgba(216, 204, 204, 0.74);
     -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
     box-sizing: border-box;
-    width: 10%;
-    height: 16%;
+    width: 11%;
+    height: 15%;
     position: absolute;
     top: 13px;
     left: 13px;
@@ -57,7 +57,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
 }
 nav {
   display: flex;
@@ -92,20 +91,22 @@ h2 {
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
+  gap:3rem;
   align-items: center;
+  height: 100vh;
 }
 .active-card {
   position: relative;
   order: -1;
   z-index: 2;
-  margin-bottom: 35%;
 }
 
 .inactive-card {
   position: relative;
   order: 1;
   z-index: 1;
-  margin-top: -45%;
+  margin-bottom: -43%;
+  
 }
 
 /* Wrapper för varje individuellt kort */
@@ -212,20 +213,31 @@ h2 {
     left: 11%;
   }
 }
+
+
 .delete-btn {
   border-radius: 15px;
   z-index: 2;
+  position: relative;
   padding: 5px;
-  transform: translate(-290px,-142px);
+  bottom: 85%;
+  left: -57%;
   transition: background-color 0.3s ease-in-out;
-  button:hover::before {
+
+  
+  &:hover button {
+    transform: translateX(-30%);
+    background-color: #e21616;
+  }
+  
+  &:hover button::before {
     font-family: "Wall-E-Font";
     content: "Delete";
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
+
 
 .form-div {
   display: flex;

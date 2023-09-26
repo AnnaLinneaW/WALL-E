@@ -26,11 +26,6 @@ export const Cards = () => {
         {cards.map((card, index) => {
           return (
             <>
-                  <div key={index} className="delete-btn">
-                    {!card.cardActive && (
-                      <button onClick={() => handleDeleteCard(index)}>X</button>
-                    )}
-                  </div>
               <div
                 className={`${
                   card.cardActive ? "active-card" : "inactive-card"
@@ -69,6 +64,11 @@ export const Cards = () => {
                         {card.lastName.toUpperCase()}
                       </p>
                     </div>
+                  </div>
+                  <div className="delete-btn">
+                    {!card.cardActive && (
+                      <button onClick={() => handleDeleteCard(index)}>X</button>
+                    )}
                   </div>
                 </div>
               </div>
