@@ -5,11 +5,11 @@
 }
 @font-face {
   font-family: "credit";
-  src: url("./assets/fonts/kredit.otf");
+  src: url("./assets/fonts/kreditfront.otf");
 }
 @font-face {
   font-family: "Wall-E-Credit";
-  src: url("./assets/fonts/wall-e/gunship3d.ttf");
+  src: url("./assets/fonts/wall-e/gunshipacad.ttf");
 }
 #root {
   max-width: 1280px;
@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 128vh;
 }
 
 nav {
@@ -30,11 +31,13 @@ nav {
   flex-wrap: nowrap;
   justify-content: space-around;
   width: 100%;
+  background-color: white;
+  border-bottom: solid #e6e6e6;
 }
 nav a {
   text-decoration: none;
-  color: #84aed5;
-  font-family: Wall-E-Font;
+  color: #000000;
+  font-family: Arial-black, Helvetica, sans-serif;
   font-size: 1.5rem;
 }
 nav a:hover {
@@ -43,12 +46,12 @@ nav a:hover {
 
 h1 {
   font-family: Wall-E-Font;
-  color: #84aed5;
+  color: #000000;
 }
 
 h2 {
-  font-family: Wall-E-Font;
-  color: #84aed5;
+  font-family: futura, Helvetica, sans-serif;
+  color: #020202;
 }
 
 .card-list {
@@ -56,9 +59,7 @@ h2 {
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
-  gap: 3rem;
-  align-items: center;
-  height: 100vh;
+  gap: 2rem;
 }
 
 .active-card {
@@ -71,7 +72,8 @@ h2 {
   position: relative;
   order: 1;
   z-index: 1;
-  margin-bottom: -43%;
+  margin-bottom: -53%;
+  height: 300px;
 }
 
 /* Wrapper för varje individuellt kort */
@@ -88,7 +90,7 @@ h2 {
 .card-EveCard {
   font-family: "credit", Courier, monospace;
   font-weight: bold;
-  color: #fff;
+  color: rgb(254, 252, 252);
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
@@ -112,7 +114,7 @@ h2 {
   -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
   box-sizing: border-box;
   width: 11%;
-  height: 15%;
+  height: 18%;
   position: absolute;
   top: 13px;
   left: 13px;
@@ -124,7 +126,7 @@ h2 {
 .card-RoboPay {
   font-family: "credit", Courier, monospace;
   font-weight: bold;
-  color: #fff;
+  color: rgb(254, 252, 252);
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
@@ -149,7 +151,7 @@ h2 {
   -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
   box-sizing: border-box;
   width: 11%;
-  height: 15%;
+  height: 18%;
   position: absolute;
   top: 13px;
   left: 13px;
@@ -161,7 +163,7 @@ h2 {
 .card-EarthSaver {
   font-family: "credit", Courier, monospace;
   font-weight: bold;
-  color: #fff;
+  color: rgb(254, 252, 252);
   border-radius: 15px;
   box-shadow: -5px -2px 55px -8px rgba(4, 4, 4, 0.74);
   -webkit-box-shadow: -5px -2px 55px -8px rgba(6, 6, 6, 0.74);
@@ -185,7 +187,7 @@ h2 {
   -moz-box-shadow: -5px -2px 55px -8px rgba(197, 170, 170, 0.74);
   box-sizing: border-box;
   width: 11%;
-  height: 15%;
+  height: 18%;
   position: absolute;
   top: 13px;
   left: 13px;
@@ -203,7 +205,7 @@ h2 {
   right: 6%;
   font-size: 150%;
   font-family: "Wall-E-Credit";
-  color: #000;
+  color: rgb(202, 195, 195);
 }
 
 .vendor-EarthSaver {
@@ -215,7 +217,7 @@ h2 {
   align-self: self-start;
   position: absolute;
   right: 6%;
-  color: #000;
+  color: rgb(27, 171, 73);
 }
 
 .vendor-EveCard {
@@ -240,6 +242,7 @@ h2 {
   position: absolute;
   bottom: -3%;
   left: 5%;
+  box-shadow: #020202;
 }
 
 .expiration {
@@ -296,39 +299,95 @@ h2 {
   border-radius: 15px;
   z-index: 2;
   position: relative;
-  padding: 5px;
-  bottom: 85%;
+  padding: 12px;
+  bottom: 100%;
+  width: 10%;
   left: -57%;
   transition: background-color 0.3s ease-in-out;
 }
-.delete-btn:hover button {
+.delete-btn:hover {
   transform: translateX(-30%);
-  background-color: #e21616;
+  background-color: #af1c1c;
+  width: 20%;
 }
-.delete-btn:hover button::before {
-  font-family: "Wall-E-Font";
+.delete-btn:hover::before {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   content: "Delete";
   top: 50%;
   left: 50%;
 }
 
+.add-card {
+  margin-bottom: 5%;
+}
+
 .form-div {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #fdfdfd;
 }
+
+.form-div .input-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%; /* Bredden av hela formen */
+  margin-bottom: 5px; /* Lite avstånd mellan rader */
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
 .form-div input {
-  width: 224px;
-  height: 35px;
-  border-radius: 10px;
-  border: 1px solid #000;
+  border-radius: 3px;
+  border-style: none;
+  border-bottom: 1px solid rgb(180, 176, 176);
+  width: 100%;
   padding: 5px;
   box-sizing: border-box;
 }
 
+.form-div select {
+  border-radius: 3px;
+  border-style: none;
+  width: 100%;
+  border-bottom: 1px solid rgb(180, 176, 176);
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.expiration-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.expiration-div #month {
+  width: 48%;
+}
+.expiration-div #year {
+  width: 48%;
+}
+
+@media screen and (max-width: 900px) {
+  .inactive-card {
+    position: relative;
+    order: 1;
+    z-index: 1;
+    margin-bottom: -53%;
+  }
+}
 @media screen and (max-width: 768px) {
   .delete-btn {
     position: relative;
-    top: 10px; /* Ny toppposition */
+    top: -200px;
+    padding: 1px;
     right: 10px; /* Ny högerposition */
     /* Andra egenskaper för mindre skärmar här */
   }
@@ -337,16 +396,20 @@ h2 {
     height: 200px;
   }
   .card-wrapper .cardNumber {
-    font-size: 150%;
+    font-size: 130%;
   }
-  .site-wrapper {
-    gap: none;
+  .card-wrapper .clientName {
+    font-size: 100%;
+  }
+  .card-wrapper .expiration {
+    font-size: 100%;
   }
   .active-card {
-    margin-bottom: 75px;
+    margin-bottom: 20px;
   }
   .inactive-card {
-    margin-top: -10em;
+    margin-top: 0em;
+    height: 46%;
   }
   nav {
     display: flex;

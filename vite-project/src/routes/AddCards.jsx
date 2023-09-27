@@ -60,6 +60,7 @@ export const AddCards = () => {
   return (
     <>
     <div className="card-list">
+      <div className="active-card">
         <div className={`card-${selectedVendor} `}>
       <div className="card-wrapper">
           <div className={`vendor-${selectedVendor}`}>
@@ -85,6 +86,7 @@ export const AddCards = () => {
             </p>
           </div>
           </div>
+        </div>
         </div>
       </div>
       <div className="add-card">
@@ -159,6 +161,7 @@ export const AddCards = () => {
               placeholder="CVV"
             />
             <br />
+            <div className="expiration-div">
             <input
               type="text"
               id="month"
@@ -206,6 +209,7 @@ export const AddCards = () => {
                 }
               }}
             />
+            </div>
           </div>
           <br />
           {error && <p style={{ color: "red" }}>{error}</p>}

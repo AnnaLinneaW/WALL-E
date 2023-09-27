@@ -65,11 +65,9 @@ export const Cards = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="delete-btn">
                     {!card.cardActive && (
-                      <button onClick={() => handleDeleteCard(index)}>X</button>
+                      <button className="delete-btn" onClick={() => handleDeleteCard(index)}>X</button>
                     )}
-                  </div>
                 </div>
               </div>
             </>
