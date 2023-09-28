@@ -30,7 +30,7 @@ const createCardSlice = createSlice({
       state.cards = action.payload;
     },
     getCardUser: async () => {},
-    
+
     addCard: (state, action) => {
       state.cards.push({ ...action.payload });
     },
@@ -46,11 +46,9 @@ const createCardSlice = createSlice({
           return { ...card, cardActive: false };
         }
       });
-    
+
       state.cards = updatedCards;
     },
-    
-    
   },
   extraReducers: {
     [getCardUser.pending]: (state, action) => {
