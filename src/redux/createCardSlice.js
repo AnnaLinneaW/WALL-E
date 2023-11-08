@@ -1,26 +1,26 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getCardUser = createAsyncThunk(
-  "addCardSlice/getCardUser",
+  'addCardSlice/getCardUser',
   async () => {
-    let response = await fetch("https://randomuser.me/api/");
+    let response = await fetch('https://randomuser.me/api/');
     const data = await response.json();
     return data;
   }
 );
 
 const createCardSlice = createSlice({
-  name: "card",
+  name: 'card',
   initialState: {
     cards: [
       {
-        firstName: "",
-        lastName: "",
-        cardNumber: "5003 1234 5678 9012",
-        cvv: "988",
-        expirationMonth: "12",
-        expirationYear: "23",
-        cardVendor: "EveCard",
+        firstName: '',
+        lastName: '',
+        cardNumber: '5003 1234 5678 9012',
+        cvv: '988',
+        expirationMonth: '12',
+        expirationYear: '23',
+        cardVendor: 'EveCard',
         cardActive: true,
       },
     ],
@@ -50,20 +50,20 @@ const createCardSlice = createSlice({
       state.cards = updatedCards;
     },
   },
-  extraReducers: {
-    [getCardUser.pending]: (state, action) => {
-      state.status = "loading";
-    },
-    [getCardUser.fulfilled]: (state, { payload }) => {
-      state.status = "success";
-      state.card = payload;
-      state.cards[0].firstName = payload.results[0].name.first;
-      state.cards[0].lastName = payload.results[0].name.last;
-    },
-    [getCardUser.rejected]: (state, action) => {
-      state.status = "failed";
-    },
-  },
+  // extraReducers: {
+  //   [getCardUser.pending]: (state, action) => {
+  //     state.status = "loading";
+  //   },
+  //   [getCardUser.fulfilled]: (state, { payload }) => {
+  //     state.status = "success";
+  //     state.card = payload;
+  //     state.cards[0].firstName = payload.results[0].name.first;
+  //     state.cards[0].lastName = payload.results[0].name.last;
+  //   },
+  //   [getCardUser.rejected]: (state, action) => {
+  //     state.status = "failed";
+  //   },
+  // },
 });
 
 export default createCardSlice.reducer;
