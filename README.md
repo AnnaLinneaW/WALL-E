@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- # [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 # WALL-E
+
+School project
+
+The E-wallet WALL-E is a web page that enables users to choose from three distinct cards, fetching user names from the Random User API. The page is constructed using React, Redux, Vite, and ESLint. Additionally, implement the ability for users to select their active card and restrict the wallet to hold a maximum of four cards.
