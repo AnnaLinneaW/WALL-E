@@ -5,6 +5,7 @@ export const getCardUser = createAsyncThunk(
   async () => {
     let response = await fetch('https://randomuser.me/api/');
     const data = await response.json();
+    console.log(data);
     return data;
   }
 );
@@ -50,20 +51,20 @@ const createCardSlice = createSlice({
       state.cards = updatedCards;
     },
   },
-  // extraReducers: {
-  //   [getCardUser.pending]: (state, action) => {
-  //     state.status = "loading";
-  //   },
-  //   [getCardUser.fulfilled]: (state, { payload }) => {
-  //     state.status = "success";
-  //     state.card = payload;
-  //     state.cards[0].firstName = payload.results[0].name.first;
-  //     state.cards[0].lastName = payload.results[0].name.last;
-  //   },
-  //   [getCardUser.rejected]: (state, action) => {
-  //     state.status = "failed";
-  //   },
-  // },
+  extraReducers: {
+    [getCardUser.pending]: (state, action) => {
+      state.status = 'loading';
+    },
+    [getCardUser.fulfilled]: (state, { payload }) => {
+      state.status = 'success';
+      state.card = payload;
+      state.cards[0].firstName = payload.results[0].name.first;
+      state.cards[0].lastName = payload.results[0].name.last;
+    },
+    [getCardUser.rejected]: (state, action) => {
+      state.status = 'failed';
+    },
+  },
 });
 
 export default createCardSlice.reducer;
