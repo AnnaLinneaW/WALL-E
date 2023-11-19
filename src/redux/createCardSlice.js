@@ -3,10 +3,21 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const getCardUser = createAsyncThunk(
   'addCardSlice/getCardUser',
   async () => {
-    let response = await fetch('https://randomuser.me/api/');
-    const data = await response.json();
-    console.log(data);
-    return data;
+    try {
+      const response = await fetch('https://randomuser.me/api/');
+
+      // Kontrollera om MIME-typen är rätt
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Felaktig MIME-typ');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error(`API-anrop misslyckades: ${error.message}`);
+    }
   }
 );
 
