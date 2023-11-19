@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "src/index.js",
   "homepage": "https://annalinneaw.github.io/WALL-E",
   "scripts": {
     "dev": "vite",
